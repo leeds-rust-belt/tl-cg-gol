@@ -60,10 +60,10 @@ fn do_gol_generation(state: [bool; BUFSIZE]) -> [bool; BUFSIZE] {
         let e = if x >= WIDTH-1 {false} else {state[coords_to_index(x+1, y)]};
         let w = if x == 0 {false} else {state[coords_to_index(x-1, y)]};
 
-        let ne = if y == 0 || x >= WIDTH-1 {false} else { state[(y-1) * WIDTH + x+1] };
-        let nw = if y == 0 || x == 0 {false} else { state[(y-1) * WIDTH + x-1] };
-        let se = if y >= HEIGHT-1 || x >= WIDTH-1 {false} else { state[(y+1) * WIDTH + x+1] };
-        let sw = if y >= HEIGHT-1 || x == 0  {false} else { state[(y+1) * WIDTH + x-1] };
+        let ne = if y == 0 || x >= WIDTH-1 {false} else { state[coords_to_index(x+1, y-1)] };
+        let nw = if y == 0 || x == 0 {false} else { state[coords_to_index(x-1, y-1)] };
+        let se = if y >= HEIGHT-1 || x >= WIDTH-1 {false} else { state[coords_to_index(x+1, y+1)] };
+        let sw = if y >= HEIGHT-1 || x == 0  {false} else { state[coords_to_index(x-1, y+1)] };
 
         if n {
             co += 1;
